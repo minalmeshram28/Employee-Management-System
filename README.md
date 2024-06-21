@@ -58,7 +58,7 @@ The application allows users to perform CRUD operations (Create, Read, Update, D
    - Select your project's details like language, Spring Boot version, and project metadata (group, artifact, name, package, and dependencies).
    - Click "Generate" to download the project zip file.
    - Extract the downloaded zip file to your desired location.
-   - Import the extracted project into your preferred IDE (e.g., IntelliJ IDEA, Eclipse).
+   - Import the extracted project into your IntelliJ IDEA
 
 3.Configure MySQL Database:
 
