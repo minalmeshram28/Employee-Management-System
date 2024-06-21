@@ -6,7 +6,6 @@ const AddEmployeeComponent = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [emailId, setEmailId] = useState("");
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -39,22 +38,13 @@ const AddEmployeeComponent = () => {
       EmployeeService.getEmployeeById(id)
         .then((response) => {
           console.log(response);
-          console.log("Hello Indisde");
           setFirstName(response.data.firstName);
           setLastName(response.data.lastName);
           setEmailId(response.data.emailId);
-          setLoading(false);
-          console.log(firstName);
-          console.log(lastName);
         })
         .catch((error) => {
           console.log(error);
-
-          console.log("Helooo this is error");
-          setLoading(false);
         });
-    } else {
-      setLoading(false);
     }
   }, [id]);
 
@@ -65,10 +55,6 @@ const AddEmployeeComponent = () => {
       <h2 className="text-center">Add Employee</h2>
     );
   };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div>
