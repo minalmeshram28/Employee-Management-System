@@ -1,4 +1,4 @@
-package com.employee.springboot.model;
+package com.employee.springboot.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

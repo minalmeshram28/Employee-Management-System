@@ -1,20 +1,24 @@
 package com.employee.springboot.controller;
 
+import com.employee.springboot.dto.EmployeeDto;
 import com.employee.springboot.exception.ResourceNotFoundException;
-import com.employee.springboot.model.Employee;
+import com.employee.springboot.entity.Employee;
 import com.employee.springboot.repository.EmployeeRepository;
+import com.employee.springboot.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/v1/employees")
+@RequestMapping("/api/employees")
 public class EmployeeController {
 
+    private EmployeeService employeeService;
     @Autowired
     private EmployeeRepository employeeRepository;
 
@@ -25,18 +29,17 @@ public class EmployeeController {
 
     // build create employee REST API
     @PostMapping
-    public Employee createEmployee(@RequestBody Employee employee) {
-        return employeeRepository.save(employee);
+    public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto employeeDto) {
+        EmployeeDto savedEmployee=employeeService.createEmployee(employeeDto);
+        return new ResponseEntity<>(savedEmployee,HttpStatus.CREATED);
     }
 
     //build get employee by id REST API
 
     @GetMapping("{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable long id){
-        System.out.println(":before-------------------------------------------------------------");
-        Employee employee=employeeRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("Employee not exist with id:"+id ));
-        return ResponseEntity.ok(employee);
+    public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("id") Long employeeId){
+        EmployeeDto employeeDto=employeeService.getEmployeeById(employeeId);
+        return ResponseEntity.ok(employeeDto);
     }
 
 //    build update employee REST API

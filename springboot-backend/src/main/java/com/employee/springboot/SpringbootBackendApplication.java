@@ -1,7 +1,6 @@
 package com.employee.springboot;
 
 
-import com.employee.springboot.model.Employee;
 import com.employee.springboot.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
