@@ -19,13 +19,6 @@ import java.util.List;
 public class EmployeeController {
 
     private EmployeeService employeeService;
-    @Autowired
-    private EmployeeRepository employeeRepository;
-
-    @GetMapping
-    public List<Employee> getAllEmployees(){
-        return employeeRepository.findAll();
-    }
 
     // build create employee REST API
     @PostMapping
@@ -42,34 +35,25 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeDto);
     }
 
-//    build update employee REST API
+    //    build get all employees REST API
+    @GetMapping
+    public ResponseEntity<List<EmployeeDto>> getAllEmployees(){
+        List<EmployeeDto> employees=employeeService.getAllEmployees();
+        return ResponseEntity.ok(employees);
+    }
+
+    //build update employee REST API
     @PutMapping("{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable long id,@RequestBody Employee employeeDetails) {
-        Employee updateEmployee = employeeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id: " + id));
-
-
-        updateEmployee.setFirstName(employeeDetails.getFirstName());
-        updateEmployee.setLastName(employeeDetails.getLastName());
-        updateEmployee.setEmailId(employeeDetails.getEmailId());
-
-
-        employeeRepository.save(updateEmployee);
-
-        return ResponseEntity.ok(updateEmployee);
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("id") Long employeeId,@RequestBody EmployeeDto updatedEmployee){
+        EmployeeDto employeeDto=employeeService.updateEmployee(employeeId,updatedEmployee);
+        return ResponseEntity.ok(employeeDto);
     }
 
     //build delete employee REST API
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> deleteEmployee(@PathVariable long id){
-
-        Employee employee = employeeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id: " + id));
-
-        employeeRepository.delete(employee);
-
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long employeeId){
+        employeeService.deleteEmployee(employeeId);
+        return ResponseEntity.ok("Employee deleted successfully!");
     }
 
 }
