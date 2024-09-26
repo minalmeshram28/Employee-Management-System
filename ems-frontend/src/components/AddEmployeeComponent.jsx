@@ -42,7 +42,7 @@ const AddEmployeeComponent = () => {
       console.log(employee);
 
       if (id) {
-        updateEmployee(id, emloyee)
+        updateEmployee(id, employee)
           .then((response) => {
             console.log(response.data);
             navigator("/employees");
