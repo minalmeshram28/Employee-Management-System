@@ -5,6 +5,7 @@ import com.employee.springboot.exception.ResourceNotFoundException;
 import com.employee.springboot.entity.Employee;
 import com.employee.springboot.repository.EmployeeRepository;
 import com.employee.springboot.service.EmployeeService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin("*")
+@AllArgsConstructor
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
