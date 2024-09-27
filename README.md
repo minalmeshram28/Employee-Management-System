@@ -37,7 +37,7 @@ git clone https://github.com/minalmeshram28/Employee-Management-System.git
 
 ## Step 2: Backend Setup (Spring Boot) in IntelliJ
 1. Open the Backend in IntelliJ:
-- In IntelliJ, go to File -> Open and navigate to the employee-management-system/backend folder. Select it and click Open.
+- In IntelliJ, go to File -> Open and navigate to the backend folder. Select it and click Open.
 - IntelliJ will automatically detect that it's a Maven project and will begin loading dependencies.
 
 2. Configure MySQL Database:
