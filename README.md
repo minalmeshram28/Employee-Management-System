@@ -30,9 +30,9 @@ This project is a web-based application for managing employee data. It allows us
 
 ## Step 1: Clone the Repository
 - Open a terminal and clone the repository from GitHub:
-```
-git clone https://github.com/minalmeshram28/Employee-Management-System.git
-```
+  ```
+  git clone https://github.com/minalmeshram28/Employee-Management-System.git
+  ```
 - Once cloned, you will have two main folders: one for the backend (springboot-backend) and one for the frontend (ems-frontend).
 
 ## Step 2: Backend Setup (Spring Boot) in IntelliJ
@@ -40,19 +40,26 @@ git clone https://github.com/minalmeshram28/Employee-Management-System.git
 - In IntelliJ, go to File -> Open and navigate to the backend folder. Select it and click Open.
 - IntelliJ will automatically detect that it's a Maven project and will begin loading dependencies.
 
-2. Configure MySQL Database:
+2. MySQL Workbench Setup:
+- Open MySQL Workbench and create a new schema (database) named employee_db by running the following SQL query:
+  ```
+  CREATE DATABASE employee_db;
+  ```
+- Ensure the MySQL server is running, and note the database username and password.
+  
+3. Configure MySQL Database:
 - Open the src/main/resources/application.properties file.
 - Update the file with your MySQL credentials:
-```
-spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
-spring.datasource.username=your_username
-spring.datasource.password=your_password
-spring.jpa.hibernate.ddl-auto=update
-```
-3. Install Dependencies:
+  ```
+  spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
+  spring.datasource.username=your_username
+  spring.datasource.password=your_password
+  spring.jpa.hibernate.ddl-auto=update
+  ```
+4. Install Dependencies:
 - If IntelliJ doesn’t automatically download dependencies, right-click on the pom.xml file and select Maven -> Reload Project.
 
-4. Run the Backend:
+5. Run the Backend:
 - In the src/main/java directory, locate the SpringBootBackendApplication.java file.
 - Right-click on it and select Run. This will start your Spring Boot backend on http://localhost:8080.
 
@@ -65,20 +72,20 @@ spring.jpa.hibernate.ddl-auto=update
 2. Install Frontend Dependencies:
 - Open the integrated terminal in VSCode .
 - Navigate to the frontend folder if you’re not already there:
-```
-cd ems-frontend
-```
+  ```
+  cd ems-frontend
+  ```
 
 3. Install the required Node.js dependencies:
-```
-npm install
-```
+    ```
+    npm install
+    ```
 
 4. Run the Frontend:
 - Start the Vite development server:
-```
-npm run dev
-```
+  ```
+  npm run dev
+  ```
 - The frontend should now be running on http://localhost:5173.
 - OR to change the port number to 3000 (commonly used for React apps):
   - Create or update a vite.config.js file in the root of the frontend folder:
