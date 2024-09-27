@@ -1,78 +1,105 @@
 # Employee-Management-System
-This is a full-stack Employee Management System application developed using Spring Boot for the backend and React for the frontend. 
-The application allows users to perform CRUD operations (Create, Read, Update, Delete) on employee data.
+This project is a web-based application for managing employee data. It allows users to perform CRUD operations (Create, Read, Update, Delete) on employee records through a responsive interface. The system is built with a Spring Boot backend and a React.js frontend.
 
 ## Features
 
-- Add New Employee: Users can add new employees with details like first name, last name, and email ID.
-- View Employees: Displays a list of all employees.
-- Update Employee: Users can update the details of an existing employee. The update form is pre-populated with the current employee details.
-- Delete Employee: Users can delete an employee from the list.
+- Add new employees
+- View all employees
+- Update employee details
+- Delete employees
 
 ## Technologies Used
 
 ### Backend
-- Spring Boot: Framework for creating RESTful web services.
-- Spring Data JPA: For database operations.
-- MySQL: Relational database management system.
+- Spring Boot 3: Backend framework
+- Spring Data JPA (Hibernate 6): Database access and ORM
+- MySQL: Database used for employee data
+- Maven: Dependency management
+- Postman: API testing
+- IntelliJ: IDE for backend development
 
 ### Frontend
-- React: JavaScript library for building user interfaces.
+- React.js 18+: Frontend framework for UI development
+- Vite.js: Build tool for React app
+- Bootstrap: CSS framework for responsive design
+- JavaScript: Programming language for frontend logic
 - Axios: For making HTTP requests from the frontend to the backend.
+- VSCode: IDE for frontend development
 
 # Getting Started with Employee Management System
 
-## React Setup in VSCode
-
-1. Install Node.js and npm:
-   - Download and install Node.js from [nodejs.org](https://nodejs.org/).
-   - npm is included with Node.js.
-
-2. Install Create React App:
-   Open a terminal or command prompt and run the following command to install Create React App globally:
-  ``` 
-   npm install -g create-react-app
+## Step 1: Clone the Repository
+- Open a terminal and clone the repository from GitHub:
 ```
-3. Create a New React App:
-  Navigate to your desired directory and create a new React app using Create React App:
+git clone https://github.com/minalmeshram28/Employee-Management-System.git
 ```
-   npx create-react-app your-react-app-name
-   cd your-react-app-name
+- Once cloned, you will have two main folders: one for the backend (springboot-backend) and one for the frontend (ems-frontend).
+
+## Step 2: Backend Setup (Spring Boot) in IntelliJ
+1. Open the Backend in IntelliJ:
+- In IntelliJ, go to File -> Open and navigate to the employee-management-system/backend folder. Select it and click Open.
+- IntelliJ will automatically detect that it's a Maven project and will begin loading dependencies.
+
+2. Configure MySQL Database:
+- Open the src/main/resources/application.properties file.
+- Update the file with your MySQL credentials:
 ```
-4. Start the React Development Server:
-   Once the app is created, start the development server:
+spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+spring.jpa.hibernate.ddl-auto=update
 ```
-   npm start
+3. Install Dependencies:
+- If IntelliJ doesn’t automatically download dependencies, right-click on the pom.xml file and select Maven -> Reload Project.
+
+4. Run the Backend:
+- In the src/main/java directory, locate the SpringBootBackendApplication.java file.
+- Right-click on it and select Run. This will start your Spring Boot backend on http://localhost:8080.
+
+## Step 3: Frontend Setup (React + Vite.js) in VSCode
+
+1. Open the Frontend in VSCode:
+- Open Visual Studio Code.
+- Go to File -> Open Folder and select the employee-management-system/frontend folder.
+  
+2. Install Frontend Dependencies:
+- Open the integrated terminal in VSCode .
+- Navigate to the frontend folder if you’re not already there:
 ```
-   This will start the development server and open your app in the default browser.
+cd ems-frontend
+```
 
-## Spring Boot Setup in IntelliJ IDEA
+3. Install the required Node.js dependencies:
+```
+npm install
+```
 
-1.Install IntelliJ IDEA:
-   
-   Download and install IntelliJ IDEA Community edition from jetbrains.com/idea/download.
-
-2.Create a New Spring Boot Project:
-
-   - Go to spring.io/start.
-   - Select your project's details like language, Spring Boot version, and project metadata (group, artifact, name, package, and dependencies).
-   - Click "Generate" to download the project zip file.
-   - Extract the downloaded zip file to your desired location.
-   - Import the extracted project into your IntelliJ IDEA
-
-3.Configure MySQL Database:
-
-   Make sure MySQL Server is installed and running.
-   
-   Create a new database named employee_management using MySQL Workbench or a MySQL client tool.
-
-4.Update application.properties:
-   Open the application.properties file located in src/main/resources directory.
-   Configure the MySQL connection properties:
+4. Run the Frontend:
+- Start the Vite development server:
+```
+npm run dev
+```
+- The frontend should now be running on http://localhost:5173.
+- OR to change the port number to 3000 (commonly used for React apps):
+  - Create or update a vite.config.js file in the root of the frontend folder:
    ```
-   spring.datasource.url=jdbc:mysql://localhost:3306/employee_management
-   spring.datasource.username=your_username
-   spring.datasource.password=your_password
-   spring.jpa.hibernate.ddl-auto=update
+   export default {
+     server: {
+       port: 3000,
+     },
+   };
    ```
+- The frontend will now run on http://localhost:3000.
+
+## Step 4: Ensure Frontend and Backend Integration
+- The frontend will make API requests to http://localhost:8080/api/employees. Make sure the Spring Boot backend is running before starting the frontend.
+- If CORS issues arise, Spring Boot is configured to allow cross-origin requests with the @CrossOrigin annotation in your controllers.
+
+
+
+
+  
+   
+   
+   
 
